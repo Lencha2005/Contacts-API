@@ -4,12 +4,12 @@ import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import { createContactSchema, updateContactSchema } from '../validation/contacts.js';
 import { isValidId } from '../middlewares/isValidId.js';
-import { authenticate } from '../middlewares/authenticate.js';
+import { checkToken } from '../middlewares/checkToken.js';
 import { upload } from '../middlewares/multer.js';
 
 const contactsRouter = Router();
 
-contactsRouter.use(authenticate);
+contactsRouter.use(checkToken);
 
 contactsRouter.get("/", ctrlWrapper(getContactsController));
 

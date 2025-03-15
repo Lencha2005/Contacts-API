@@ -34,7 +34,7 @@ export const setupServer = () => {
           });
     });
 
-    app.use("/auth", authRouter);
+    app.use("/users", authRouter);
     app.use("/contacts", contactsRouter);
 
 
