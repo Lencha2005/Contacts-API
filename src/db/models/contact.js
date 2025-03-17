@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-import { emailRegex } from "../../constants/index.js";
 
 const contactSchema = new Schema(
     {
@@ -7,26 +6,9 @@ const contactSchema = new Schema(
             type: String,
             required: true,
         },
-        phoneNumber: {
+        number: {
             type: String,
             required: true,
-        },
-        email: {
-            type: String,
-            match: emailRegex,
-        },
-        isFavourite: {
-            type: Boolean,
-            default: false,
-        },
-        contactType: {
-            type: String,
-            enum: ["work", "home", "personal"],
-            default: "personal",
-            required: true,
-        },
-        photo: {
-            type: String,
         },
         userId: {
             type: Schema.Types.ObjectId,

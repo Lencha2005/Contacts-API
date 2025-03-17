@@ -39,11 +39,11 @@ export const logoutUserController = async (req, res) => {
 };
 
 export const refreshUserController = async (req, res) => {
-  const user = req.body;
+  const user = req.user;
 
   res.json({
     name: user.name,
-    email: user.email,
+    email: user.email
   })
 }
 
