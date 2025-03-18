@@ -5,16 +5,16 @@ import {
   loginSchema,
   loginWithGoogleOAuthSchema,
   registerSchema,
-  // requestResetEmailSchema,
-  // resetPasswordSchema,
+  requestResetEmailSchema,
+  resetPasswordSchema,
 } from '../validation/auth.js';
 
 import {
   loginUserController,
   registerUserController,
   logoutUserController,
-  // requestResetEmailController,
-  // resetPasswordController,
+  requestResetEmailController,
+  resetPasswordController,
   getGoogleOAuthUrlController,
   loginWithGoogleController,
   refreshUserController,
@@ -39,17 +39,17 @@ authRouter.post('/logout', checkToken, ctrlWrapper(logoutUserController));
 
 authRouter.get('/current', checkToken, ctrlWrapper(refreshUserController));
 
-// authRouter.post(
-//   '/send-reset-email',
-//   validateBody(requestResetEmailSchema),
-//   ctrlWrapper(requestResetEmailController),
-// );
+authRouter.post(
+  '/request-reset-email',
+  validateBody(requestResetEmailSchema),
+  ctrlWrapper(requestResetEmailController),
+);
 
-// authRouter.post(
-//   '/reset-pwd',
-//   validateBody(resetPasswordSchema),
-//   ctrlWrapper(resetPasswordController),
-// );
+authRouter.post(
+  '/reset-pwd',
+  validateBody(resetPasswordSchema),
+  ctrlWrapper(resetPasswordController),
+);
 
 authRouter.get('/get-oauth-url', ctrlWrapper(getGoogleOAuthUrlController));
 
