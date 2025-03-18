@@ -1,12 +1,12 @@
 import {
-  // loginOrSignupWithGoogle,
+  loginOrSignupWithGoogle,
   loginUser,
   logoutUser,
   registerUser,
   // requestResetToken,
   // resetPassword,
 } from '../services/auth.js';
-// import { generateAuthUrl } from '../utils/googleOAuth2.js';
+import { generateAuthUrl } from '../utils/googleOAuth2.js';
 
 export const registerUserController = async (req, res) => {
   const user = await registerUser(req.body);
@@ -66,27 +66,20 @@ export const refreshUserController = async (req, res) => {
 //   });
 // };
 
-// export const getGoogleOAuthUrlController = async (req, res) => {
-//   const url = generateAuthUrl();
+export const getGoogleOAuthUrlController = async (req, res) => {
+  const url = generateAuthUrl();
 
-//   res.json({
-//     status: 200,
-//     message: 'Successfully get Google OAuth url!',
-//     data: {
-//       url,
-//     },
-//   });
-// };
+  res.status(200).json(url);
+};
 
-// export const loginWithGoogleController = async (req, res) => {
-//   const session = await loginOrSignupWithGoogle(req.body.code);
-//   // setupSession(res, session);
+export const loginWithGoogleController = async (req, res) => {
+  const user = await loginOrSignupWithGoogle(req.body.code);
 
-//   res.json({
-//     status: 200,
-//     message: 'Successfully logged in via Google OAuth!',
-//     data: {
-//       accessToken: session.accessToken,
-//     },
-//   });
-// };
+  res.json({
+    user: {
+      name: user.name,
+      email: user.email,
+    },
+    token: user.token,
+  });
+};

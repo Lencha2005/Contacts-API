@@ -3,7 +3,7 @@ import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import {
   loginSchema,
-  // loginWithGoogleOAuthSchema,
+  loginWithGoogleOAuthSchema,
   registerSchema,
   // requestResetEmailSchema,
   // resetPasswordSchema,
@@ -15,8 +15,8 @@ import {
   logoutUserController,
   // requestResetEmailController,
   // resetPasswordController,
-  // getGoogleOAuthUrlController,
-  // loginWithGoogleController,
+  getGoogleOAuthUrlController,
+  loginWithGoogleController,
   refreshUserController,
 } from '../controllers/auth.js';
 import { checkToken } from '../middlewares/checkToken.js';
@@ -51,12 +51,12 @@ authRouter.get('/current', checkToken, ctrlWrapper(refreshUserController));
 //   ctrlWrapper(resetPasswordController),
 // );
 
-// authRouter.get('/get-oauth-url', ctrlWrapper(getGoogleOAuthUrlController));
+authRouter.get('/get-oauth-url', ctrlWrapper(getGoogleOAuthUrlController));
 
-// authRouter.post(
-//   '/confirm-google-auth',
-//   validateBody(loginWithGoogleOAuthSchema),
-//   ctrlWrapper(loginWithGoogleController),
-// );
+authRouter.post(
+  '/confirm-google-auth',
+  validateBody(loginWithGoogleOAuthSchema),
+  ctrlWrapper(loginWithGoogleController),
+);
 
 export default authRouter;

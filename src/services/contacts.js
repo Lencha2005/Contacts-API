@@ -5,10 +5,15 @@ export const getContacts = (userId) => ContactsCollection.find({ userId });
 export const createContact = (contactData) =>
   ContactsCollection.create(contactData);
 
-export const updateContact = async (contactId, contactData, userId, options = {}) => {
+export const updateContact = async (
+  contactId,
+  contactData,
+  userId,
+  options = {},
+) => {
   const updatedContact = await ContactsCollection.findOneAndUpdate(
     { _id: contactId, userId },
-    contactData ,
+    contactData,
     {
       new: true,
       ...options,
@@ -19,4 +24,4 @@ export const updateContact = async (contactId, contactData, userId, options = {}
 };
 
 export const deleteContact = (contactId, userId) =>
-  ContactsCollection.findOneAndDelete({_id: contactId, userId});
+  ContactsCollection.findOneAndDelete({ _id: contactId, userId });
