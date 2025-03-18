@@ -5,7 +5,6 @@ import {
   getContacts,
   updateContact,
 } from '../services/contacts.js';
-import { getEnvVar } from '../utils/getEnvVar.js';
 
 export const getContactsController = async (req, res) => {
   const contacts = await getContacts(req.user._id);
@@ -34,12 +33,12 @@ export const patchContactController = async (req, res) => {
 
 export const deleteContactController = async (req, res) => {
   const { _id: userId } = req.user;
-  const { contactId: _id } = req.params;
-  const data = await deleteContact({ _id, userId });
+  const { contactId } = req.params;
+  const deletedContact = await deleteContact( contactId, userId );
 
-  if (!data) {
+  if (!deletedContact) {
     throw createHttpError(404, `Contact not found`);
   }
 
-  res.status(204).send();
+  res.json(deletedContact);
 };
