@@ -87,13 +87,12 @@ export const requestResetToken = async (email) => {
     link: `${getEnvVar('APP_DOMAIN')}/reset-password?token=${resetToken}`,
   });
 
-    await sendEmail({
-      from: getEnvVar('SMTP_FROM'),
-      to: email,
-      subject: 'Reset your password',
-      html,
-    });
-
+  await sendEmail({
+    from: getEnvVar('SMTP_FROM'),
+    to: email,
+    subject: 'Reset your password',
+    html,
+  });
 };
 
 export const resetPassword = async (userData) => {
@@ -126,27 +125,24 @@ export const resetPassword = async (userData) => {
   );
 };
 
-
-
 export const loginOrSignupWithGoogle = async (code) => {
-    const loginTicket = await validateCode(code);
-    const payload = loginTicket.getPayload();
+  const loginTicket = await validateCode(code);
+  const payload = loginTicket.getPayload();
 
-    if (!payload) throw createHttpError(401);
+  if (!payload) throw createHttpError(401);
 
-    let user = await UsersCollection.findOne({ email: payload.email });
+  let user = await UsersCollection.findOne({ email: payload.email });
 
-    if (!user) {
-      const password = await bcrypt.hash(randomBytes(10).toString('hex'), 10);
+  if (!user) {
+    const password = await bcrypt.hash(randomBytes(10).toString('hex'), 10);
 
-      user = await UsersCollection.create({
-        email: payload.email,
-        name: getFullNameFromGoogleTokenPayload(payload),
-        password,
-      });
-    }
-    return await updateUserWithToken(user._id);
+    user = await UsersCollection.create({
+      email: payload.email,
+      name: getFullNameFromGoogleTokenPayload(payload),
+      password,
+    });
+  }
+  return await updateUserWithToken(user._id);
 };
-
 
 export const findUserById = (userId) => UsersCollection.findById(userId);

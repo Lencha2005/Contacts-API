@@ -6,16 +6,11 @@ export const createContactSchema = Joi.object({
     'string.min': 'Username should have at least 3 characters',
     'string.max': 'Username should have at most 20 characters',
   }),
-  number: Joi.string()
-    .pattern(numberRegex)
-    .min(3)
-    .max(20)
-    .required()
-    .messages({
-      'string.pattern': 'Phone Number is not valid',
-      'string.min': 'Phone Number should have at least 3 characters',
-      'string.max': 'Phone Number should have at most 20 characters',
-    }),
+  number: Joi.string().pattern(numberRegex).min(3).max(20).required().messages({
+    'string.pattern': 'Phone Number is not valid',
+    'string.min': 'Phone Number should have at least 3 characters',
+    'string.max': 'Phone Number should have at most 20 characters',
+  }),
 });
 
 export const updateContactSchema = Joi.object({
