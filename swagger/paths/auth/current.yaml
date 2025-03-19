@@ -1,0 +1,28 @@
+tags:
+  - Auth
+summary: get current user
+operationId: currentUser
+description: Get information about the current user
+security: []
+responses:
+  '200':
+    description: 'Information found'
+    content:
+      application/json:
+        schema:
+          required:
+            - name
+            - email
+          properties:
+            name:
+              type: string
+              example: "John Doe"
+            email:
+              type: string
+              example: 'example@gmail.com'
+  '401':
+    $ref: '../../components/responses/401.yaml'
+  '404':
+    $ref: '../../components/responses/404.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'

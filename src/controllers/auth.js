@@ -15,6 +15,7 @@ export const registerUserController = async (req, res) => {
     user: {
       name: user.name,
       email: user.email,
+      password: user.password,
     },
     token: user.token,
   });
@@ -25,8 +26,8 @@ export const loginUserController = async (req, res) => {
 
   res.status(200).json({
     user: {
-      name: user.name,
       email: user.email,
+      password: user.password,
     },
     token: user.token,
   });
@@ -40,10 +41,9 @@ export const logoutUserController = async (req, res) => {
 
 export const refreshUserController = async (req, res) => {
   const user = req.user;
-
   res.json({
     name: user.name,
-    email: user.email
+    email: user.email,
   })
 }
 

@@ -1,0 +1,18 @@
+type: object
+properties:
+  user:
+    type: object
+    properties:
+      name:
+        type: string
+        example: "John Doe"
+      email:
+        type: string
+        format: email
+        example: "example@gmail.com"
+      password:
+        type: string
+        example: 'Frhge65fsfgh45'
+  token:
+    type: string
+    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
