@@ -1,5 +1,5 @@
 tags:
-  - Auth
+  - Users
 summary: Lodin User
 operationId: loginUser
 description: 'Login user'
