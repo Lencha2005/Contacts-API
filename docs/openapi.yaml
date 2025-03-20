@@ -10,8 +10,8 @@ info:
 tags:
   - name: Contacts
     description: Operations about contacts.
-  - name: Auth
-    description: Auth operations.
+  - name: Users
+    description: Users operations.
 servers:
   - url: https://contacts-api-ccs8.onrender.com
 paths:
