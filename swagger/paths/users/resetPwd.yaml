@@ -1,5 +1,5 @@
 tags:
-  - Auth
+  - Users
 summary: Reset User Password
 operationId: resetPwd
 description: 'Reset user password via url from sended reset mail'
@@ -9,33 +9,23 @@ requestBody:
     application/json:
       schema:
         required:
-          - password
           - token
+          - password
         properties:
+          token:
+            type: string
+            example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
           password:
             type: string
             example: 'Frhge65fsfgh45'
-          token:
-            type: string
-            example: '${json web token}'
 responses:
   '200':
     description: 'Change user password by provided new pass and jwt'
     content:
       application/json:
         schema:
-          required:
-            - status
-            - message
-            - data
-          properties:
-            status:
-              type: integer
-              example: 200
-            message:
-              type: string
-              example: 'Password has been successfully reset'
-            data: {}
+          type: object
+          example: {}
   '401':
     $ref: '../../components/responses/401.yaml'
   '500':

@@ -1,5 +1,5 @@
 tags:
-  - Auth
+  - Users
 summary: confirm Auth by Google OAuth Code
 operationId: confirmOAuth
 description: 'Sign Up or Sign In with Google OAuth code from recently received URL'
@@ -20,25 +20,7 @@ responses:
     content:
       application/json:
         schema:
-          required:
-            - status
-            - message
-            - data
-          properties:
-            status:
-              type: integer
-              example: 200
-            message:
-              type: string
-              example: 'Successfully logged in via Google OAuth!'
-            data:
-              type: object
-              required:
-                - accessToken
-              properties:
-                accessToken:
-                  type: string
-                  example: 'nzHcewHaTdjRfqVW0bX0UxJmIrzRlDoYEtMyStGX'
+          $ref: ../../components/responses/userResponse.yaml
   '401':
     $ref: '../../components/responses/401.yaml'
   '500':

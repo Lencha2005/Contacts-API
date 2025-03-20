@@ -13,7 +13,7 @@ tags:
   - name: Auth
     description: Auth operations.
 servers:
-  - url: https://hw7-ukqo.onrender.com
+  - url: https://localhost:3000
 paths:
   /contacts:
     get:
@@ -27,28 +27,28 @@ paths:
       $ref: ../swagger/paths/contacts/{contactId}/delete.yaml
   /users/signup:
     post:
-      $ref: ../swagger/paths/auth/signUp.yaml
+      $ref: ../swagger/paths/users/signUp.yaml
   /users/login:
     post:
-      $ref: ../swagger/paths/auth/login.yaml
+      $ref: ../swagger/paths/users/login.yaml
   /users/logout:
     post:
-      $ref: ../swagger/paths/auth/logout.yaml
+      $ref: ../swagger/paths/users/logout.yaml
   /users/current:
     post:
-      $ref: ../swagger/paths/auth/current.yaml
+      $ref: ../swagger/paths/users/current.yaml
   /users/send-reset-email:
     post:
-      $ref: ../swagger/paths/auth/sendResetEmail.yaml
+      $ref: ../swagger/paths/users/sendResetEmail.yaml
   /users/reset-pwd:
     post:
-      $ref: ../swagger/paths/auth/resetPwd.yaml
+      $ref: ../swagger/paths/users/resetPwd.yaml
   /users/get-oauth-url:
     get:
-      $ref: ../swagger/paths/auth/getOAuthUrl.yaml
+      $ref: ../swagger/paths/users/getOAuthUrl.yaml
   /users/confirm-oauth:
     post:
-      $ref: ../swagger/paths/auth/confirmOAuth.yaml
+      $ref: ../swagger/paths/users/confirmOAuth.yaml
 components:
   securitySchemes:
     bearerAuth:

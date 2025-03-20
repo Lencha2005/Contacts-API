@@ -1,6 +1,6 @@
 tags:
-  - Auth
-summary: Send Reset mail
+  - Users
+summary: Request password reset email
 operationId: sendResetMail
 description: 'Send mail with url to reset user password'
 security: []
@@ -20,18 +20,8 @@ responses:
     content:
       application/json:
         schema:
-          required:
-            - status
-            - message
-            - data
-          properties:
-            status:
-              type: integer
-              example: 200
-            message:
-              type: string
-              example: 'Reset password email has been successfully sent'
-            data: {}
+          type: object
+          example: {}
   '404':
     $ref: ../../components/responses/404.yaml
   '500':
