@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://hw7-ukqo.onrender.com"
+      "url": "https://contacts-api-ccs8.onrender.com"
     }
   ],
   "tags": [
@@ -20,8 +20,8 @@
       "description": "Operations about contacts."
     },
     {
-      "name": "Auth",
-      "description": "Auth operations."
+      "name": "Users",
+      "description": "Users operations."
     }
   ],
   "paths": {
